@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.6'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.pknu'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// 스프링부트 구동 담당
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// 내장 톰캣 띄우고 REST API 만들게 하는 것
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// database 처리를 담당
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11:21.1.0.0'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
