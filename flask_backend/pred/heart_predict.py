@@ -1,7 +1,7 @@
 import joblib
 import numpy as np
 
-heart_model = joblib.load("./models/best_model.pkl")
+heart_model = joblib.load("./models/heart_predict_model.pkl")
 
 def getheartPredict(features):
     print(">>>>>>예측시작")
